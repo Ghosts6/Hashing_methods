@@ -67,3 +67,5 @@ hash_password = hash_md5(password)
 # now we can store password in database or to se result like here print it
 print(hash_password)
 ```
+# more to learn:
+if you interested in hashing and password security and how to improve it,its good idea to learn about rainbow table and differed way of using and adding salt 
