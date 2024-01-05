@@ -92,5 +92,34 @@ hash_password = hash_md5(password)
 # now we can store password in database or to se result like here print it
 print(hash_password)
 ```
+# usage:
+here we will see an example of using hashing method to secure user data in django project
+model.py
+```python3
+from django.db import models
+import bcrypt
+# table to sort user data
+class User(models.Model):
+    username = models.CharField(max_length=100, unique=True)
+    password = models.CharField(max_length=256)  
+
+    def set_password(self, password):
+        # Hash the password using bcrypt and store the hashed value
+        hash_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+        self.password = hash_password.decode('utf-8')
+        
+    def check_password(self, password):
+        return bcrypt.checkpw(password.encode(), self.password.encode())
+            
+    # Automatically hash the password 
+    def save(self, *args, **kwargs):
+        if not self.pk: 
+            self.set_password(self.password)
+        super().save(*args, **kwargs)
+   
+    def __str__(self):
+        return self.username
+```
+
 # more to read:
 if you interested in hashing and password security and how to improve it,its good idea to learn about rainbow table and differed way of using and adding salt 
