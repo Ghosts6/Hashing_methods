@@ -7,7 +7,7 @@ now a days we have differend hashing method like md5 ssha sha-1 sha-256 bcrypt a
 ![hash](https://github.com/Ghosts6/Hashing_methods/blob/main/hash.png)
 
 
-# bycrypt :
+# bcrypt :
 ```python
 # requirement : pip install bcrypt
 import bcrypt
