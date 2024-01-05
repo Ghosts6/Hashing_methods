@@ -31,8 +31,22 @@ hash_password = hash_sha_256(password)
 # now we can store password in database or to se result like here print it
 print(hash_password)
 ```
-# ssha :
+# ssha/sha-1 :
+ssha and sha-1 methods are same the only difference is they add salt to ssha so its more secure then sha-1
+```python
+import hashlib
+import os
+# def for hashing password with ssha method
+def hash_ssha(password):
+    salt = os.urandom(8)
+    salted_password = password.encode() + salt
+    hash_password = hashlib.sha1(salted_password).digest()
+    ssha_password = f'{hash_password.decode("iso-8859-1")}{salt.hex()}'
+    return ssha_password
 
-# sha-1 :
-
+password = "my_password"
+hash_password= hash_ssha(password)
+# now we can store password in database or to se result like here print it
+print(hash_password)
+```
 # md5 :
