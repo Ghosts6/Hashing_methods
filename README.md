@@ -120,6 +120,12 @@ class User(models.Model):
     def __str__(self):
         return self.username
 ```
+#salt:
+🧂 salt is a random string of data that is added to the input(password) before the hashing process. The primary purpose of using a salt is to enhance the security of hashed passwords.
+Salting helps defend against attacks like precomputed rainbow table attacks. By adding a unique random salt to each password before hashing, even identical passwords will have different hashed values.
+Each user's password is hashed with a unique salt. This means if two users have the same password, their hashed passwords in the database will be different due to the unique salts.
+Salting increases the complexity of brute-force and dictionary attacks. Attackers need to compute hashes for each password guess combined with each unique salt, significantly increasing the computational effort required to crack passwords.
+![salt](https://github.com/Ghosts6/Hashing_methods/blob/main/salt-hash-password.jpg)
 
 # more to read:
 if you interested in hashing and password security and how to improve it,its good idea to learn about rainbow table and differed way of using and adding salt 
